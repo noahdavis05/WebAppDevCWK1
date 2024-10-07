@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Your Assignments</h1>
+    <div class="row">
+        {% for assignment in assignments %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ assignment.assessment_title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Module Code: {{ assignment.module_code }}</h6>
+                    <p class="card-text">
+                        <strong>Deadline:</strong> {{ assignment.deadline.strftime('%d-%m-%Y') }}<br>
+                        <strong>Description:</strong> {{ assignment.description }}<br>
+                        <strong>Status:</strong> 
+                        {% if assignment.completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-warning">Incomplete</span>
+                        {% endif %}
+                    </p>
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>No assignments available yet!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
