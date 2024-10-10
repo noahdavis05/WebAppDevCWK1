@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Assignment Details</h1>
+        
+        <!-- Bootstrap card for assignment details -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>{{ assignment.title }}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Module Code: {{ assignment.module_code }}</h6>
+            </div>
+            <div class="card-body">
+                
+                <p><strong>Due Date:</strong> {{ assignment.deadline.strftime('%d-%m-%Y') }}</p>
+                <p><strong>Description:</strong> {{ assignment.description }}</p>
+                <p><strong>Status:</strong> 
+                {% if assignment.is_completed %}
+                    <span class="badge bg-success">Completed</span>
+                {% else %}
+                    <span class="badge bg-warning">Incomplete</span>
+                {% endif %}
+                </p>
+                <p><strong>Created On:</strong> {{ assignment.date_created.strftime('%d-%m-%Y')}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Assignments</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
