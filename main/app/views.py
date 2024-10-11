@@ -62,3 +62,30 @@ def view_assignment(assignment_id):
 
     # render the assignment template 
     return render_template("view_assignment.html", assignment = assignment)
+
+
+@app.route("/edit-assignment/<int:assignment_id>", methods=['GET','Post'])
+def edit_assignment(assignment_id):
+    # get the assignment from the database
+    assignment = Assignment.query.get(assignment_id)
+    # check if this assignment exists
+    if assignment is None:
+        return render_template("404.html", message="Assignment doesn't exist!"), 404
+    
+    # need to get the assignment form
+    form = AssignmentForm(object=assignment)
+
+    # check form is validated and update the row in db
+    if form.validate_on_submit():
+        assignment.title = form.title.data
+        assignment.module_code = form.module_code.data
+        assignment.deadline = form.deadline.data
+        assignment.description = form.description.data
+        assignment.is_completed = form.is_completed.data
+        
+        # Commit the changes to the database
+        db.session.commit()
+        flash('Assignment has been updated!', 'success')
+        return redirect("/")  # Redirect to the homepage or another route
+    
+    return render_template("edit_assignment.html", form=form, assignment=assignment)
