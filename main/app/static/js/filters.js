@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Radio buttons for ordering
     const orderSoonest = document.getElementById("orderSoonest");
     const orderLatest = document.getElementById("orderLatest");
-    const orderNone = document.getElementById("orderNone");
+
+    // Default sorting on page load
+    sortAssignments("soonest");
 
     function filterAssignments() {
         const selectedStatusFilter = filterStatusSelect.value;
@@ -89,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
         console.log(assignmentList); // For debugging purposes
     }
-    
 
     // Toggle filter visibility
     toggleFiltersButton.addEventListener("click", function () {
@@ -116,9 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 sortAssignments("soonest");
             } else if (this.value === "latest") {
                 sortAssignments("latest");
-            } else if (this.value === "none") {
-                // No ordering is required when "None" is selected
-                sortAssignments("none");
             }
         });
     });
@@ -127,4 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
     filterStatusSelect.addEventListener("change", filterAssignments);
     filterModuleSelect.addEventListener("change", filterAssignments);
     searchInput.addEventListener("input", filterAssignments);
+
+     // Initially filter to show only outstanding tasks
+     filterStatusSelect.value = "incomplete"; // Set default filter to show only incomplete tasks
+     filterAssignments(); // Call to apply the initial filter
 });
