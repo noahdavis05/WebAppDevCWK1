@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const isFilterVisible = filterContainer.style.display === "block";
         filterContainer.style.display = isFilterVisible ? "none" : "block";
         orderContainer.style.display = "none";  // Hide the order container when filters are shown
-        orderByButton.textContent = "Order By"; // Reset Order By button text
-        toggleFiltersButton.textContent = isFilterVisible ? "Show Filters" : "Hide Filters"; // Change button text
+        orderByButton.textContent = "Order"; // Reset Order By button text
+        toggleFiltersButton.textContent = isFilterVisible ? "Filter" : "Hide"; // Change button text
     });
 
     // Toggle order visibility
@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const isOrderVisible = orderContainer.style.display === "block";
         orderContainer.style.display = isOrderVisible ? "none" : "block";
         filterContainer.style.display = "none";  // Hide the filter container when order is shown
-        toggleFiltersButton.textContent = "Show Filters"; // Reset Filters button text
-        orderByButton.textContent = isOrderVisible ? "Order By" : "Hide Order"; // Change button text
+        toggleFiltersButton.textContent = "Filter"; // Reset Filters button text
+        orderByButton.textContent = isOrderVisible ? "Order" : "Hide"; // Change button text
     });
 
     // Handle radio button change event to trigger sorting

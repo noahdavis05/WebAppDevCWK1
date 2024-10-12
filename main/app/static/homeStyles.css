@@ -1,0 +1,30 @@
+/* CSS styles to adjust positioning */
+#filter-container,
+#order-container {
+    margin-top: -20px; /* Adjust as necessary to bring the section closer to the buttons */
+    position: relative; /* Optional: use relative positioning if needed */
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+/* Style for the button section */
+.button-navbar {
+    background-color: #007bff; /* Background color for the button section */
+    padding: 10px; /* Padding around the button section */
+    border-radius: 0.25rem; /* Slightly rounded corners */
+    margin-bottom: 20px; /* Space below the button section */
+}
+
+/* Style buttons */
+.button-navbar .btn {
+    margin: 0; /* Reset margin for buttons */
+}
+
+/* Hover effects for buttons */
+.button-navbar .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Add transition for a smooth hover effect */
+.button-navbar .btn {
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}

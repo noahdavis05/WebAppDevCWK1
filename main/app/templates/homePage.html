@@ -1,20 +1,26 @@
 {% extends "base.html" %}
 
+{% block head%}
+<link rel="stylesheet" href="../static/homeStyles.css">
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <h1 class="mb-4">Your Assignments</h1>
 
-    <!-- Navbar-like section -->
-    <div class="d-flex mb-4">
-        <!-- Show Filters Button -->
-        <button id="toggle-filters" class="btn btn-primary me-2" ">Show Filters</button>
-
-        <!-- Order By Button (No dropdown) -->
-        <button id="order-by" class="btn btn-primary me-2" ">Order By</button>
-
-        <!-- Add Assignment Button (Aligned to the right) -->
-        <a href="/add-assignment" class="btn btn-primary ms-auto" ">Add Assignment</a>
+    <div class="button-navbar d-flex mb-4">
+        <!-- Filters Button -->
+        <button id="toggle-filters" class="btn btn-primary me-2">Filters</button>
+    
+        <!-- Order Button -->
+        <button id="order-by" class="btn btn-primary me-2">Order</button>
+    
+        <!-- New Assignment Button -->
+        <a href="/add-assignment" class="btn btn-primary">New</a>
     </div>
+
+    
+    
 
     <!-- Filter Section (Initially hidden) -->
     <div id="filter-container" style="display: none;" class="card mb-4 shadow-sm">
