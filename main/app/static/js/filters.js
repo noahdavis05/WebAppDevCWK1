@@ -5,22 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterModuleSelect = document.getElementById("filter-module");
     const searchInput = document.getElementById("search-title");
     const assignmentCards = document.querySelectorAll(".assignment-card");
+    
+    // Get filter and order containers and buttons
     const filterContainer = document.getElementById("filter-container");
+    const orderContainer = document.getElementById("order-container");
     const toggleFiltersButton = document.getElementById("toggle-filters");
-
-    console.log("Filter Status Select:", filterStatusSelect);
-    console.log("Filter Module Select:", filterModuleSelect);
-    console.log("Search Input:", searchInput);
-    console.log("Assignment Cards:", assignmentCards);
+    const orderByButton = document.getElementById("order-by");
+    
+    // Radio buttons for ordering
+    const orderSoonest = document.getElementById("orderSoonest");
+    const orderLatest = document.getElementById("orderLatest");
+    const orderNone = document.getElementById("orderNone");
 
     function filterAssignments() {
         const selectedStatusFilter = filterStatusSelect.value;
         const selectedModuleFilter = filterModuleSelect.value;
         const searchQuery = searchInput.value.toLowerCase();
-
-        console.log("Status Filter:", selectedStatusFilter);
-        console.log("Module Filter:", selectedModuleFilter);
-        console.log("Search Query:", searchQuery);
 
         assignmentCards.forEach(card => {
             const status = card.getAttribute("data-status");
@@ -49,11 +49,78 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Function to convert 'dd-mm-yyyy' format to a Date object
+    function parseDate(dateString) {
+        const [day, month, year] = dateString.split("-");
+        return new Date(`${year}-${month}-${day}`);  // Format as 'yyyy-mm-dd'
+    }
+
+    // Sort assignments based on the due date
+    function sortAssignments(order) {
+        // Get the cards and convert to an array
+        const assignmentList = Array.from(document.querySelectorAll(".assignment-card"));
+    
+        if (order === "soonest") {
+            // Sort by deadline
+            assignmentList.sort((card1, card2) => {
+                const date1 = parseDate(card1.querySelector(".dateP").dataset.deadline);
+                const date2 = parseDate(card2.querySelector(".dateP").dataset.deadline);
+                return date1 - date2; // Ascending order
+            });
+        } else if (order === "latest") {
+            // Sort by deadline (latest first)
+            assignmentList.sort((card1, card2) => {
+                const date1 = parseDate(card1.querySelector(".dateP").dataset.deadline);
+                const date2 = parseDate(card2.querySelector(".dateP").dataset.deadline);
+                return date2 - date1; // Descending order
+            });
+        }
+    
+        // Get the parent container of these cards
+        const parentContainer = document.querySelector('.row');
+    
+        // Remove all existing cards
+        document.querySelectorAll('.assignment-card').forEach(card => card.remove());
+    
+        // Append the sorted cards back into the container
+        assignmentList.forEach(card => {
+            parentContainer.appendChild(card);
+        });
+    
+        console.log(assignmentList); // For debugging purposes
+    }
+    
+
     // Toggle filter visibility
     toggleFiltersButton.addEventListener("click", function () {
-        const isVisible = filterContainer.style.display === "block";
-        filterContainer.style.display = isVisible ? "none" : "block";
-        toggleFiltersButton.textContent = isVisible ? "Apply Filters" : "Hide Filters"; // Change button text
+        const isFilterVisible = filterContainer.style.display === "block";
+        filterContainer.style.display = isFilterVisible ? "none" : "block";
+        orderContainer.style.display = "none";  // Hide the order container when filters are shown
+        orderByButton.textContent = "Order By"; // Reset Order By button text
+        toggleFiltersButton.textContent = isFilterVisible ? "Show Filters" : "Hide Filters"; // Change button text
+    });
+
+    // Toggle order visibility
+    orderByButton.addEventListener("click", function () {
+        const isOrderVisible = orderContainer.style.display === "block";
+        orderContainer.style.display = isOrderVisible ? "none" : "block";
+        filterContainer.style.display = "none";  // Hide the filter container when order is shown
+        toggleFiltersButton.textContent = "Show Filters"; // Reset Filters button text
+        orderByButton.textContent = isOrderVisible ? "Order By" : "Hide Order"; // Change button text
+    });
+
+    // Handle radio button change event to trigger sorting
+    document.querySelectorAll('input[name="orderOptions"]').forEach(radio => {
+        radio.addEventListener("change", function () {
+            if (this.value === "soonest") {
+                sortAssignments("soonest");
+            } else if (this.value === "latest") {
+                sortAssignments("latest");
+            } else if (this.value === "none") {
+                // No ordering is required when "None" is selected
+                sortAssignments("none");
+            }
+        });
     });
 
     // Event listeners for all filters
