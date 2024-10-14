@@ -1,30 +1,57 @@
-/* CSS styles to adjust positioning */
+/* Body styling */
+body {
+    font-family: Arial, sans-serif; /* Use a readable font */
+    background-color: #FFF9D6; /* Dark Slate background */
+    color: #D5D5D5; /* Light Gray text */
+    line-height: 1.6; /* Improve readability */
+}
+
+
+
+/* Button styling */
+
+
+/* Filter and Order Container styling */
 #filter-container,
 #order-container {
-    margin-top: -20px; /* Adjust as necessary to bring the section closer to the buttons */
-    position: relative; /* Optional: use relative positioning if needed */
+    margin-top: -20px; /* Adjust to bring sections closer to the buttons */
+    position: relative; /* Positioning if needed */
     z-index: 1; /* Ensure it appears above other content */
 }
 
-/* Style for the button section */
-.button-navbar {
-    background-color: #007bff; /* Background color for the button section */
-    padding: 10px; /* Padding around the button section */
-    border-radius: 0.25rem; /* Slightly rounded corners */
-    margin-bottom: 20px; /* Space below the button section */
+/* Card styling */
+.card {
+    background-color: #E2E2B6; /* Darker background for cards */ /* Subtle border for cards */
+    color: #D5D5D5; /* Light Gray text for card content */
+    border: 0; /* Remove any default border */
+    box-shadow: none; /* Remove default Bootstrap shadow */
 }
 
-/* Style buttons */
-.button-navbar .btn {
-    margin: 0; /* Reset margin for buttons */
+.card-body {
+    background-color: #FFF9D6;
+    border: 0 solid #FF6F61;
+    padding: 0;
+    margin: 0;
 }
 
-/* Hover effects for buttons */
-.button-navbar .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+
+/* Card Title styling */
+.card-title {
+    color: #FF6F61; /* Coral color for card titles */
 }
 
-/* Add transition for a smooth hover effect */
-.button-navbar .btn {
-    transition: background-color 0.3s; /* Smooth transition for background color */
+/* Assignment status badge colors */
+.badge.bg-success {
+    background-color: #4CAF50; /* Green for completed */
+}
+
+.badge.bg-warning {
+    background-color: #FF9800; /* Orange for incomplete */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .navbar-collapse {
+        background-color: #2B2B2B; /* Ensure collapsible navbar has the same background */
+    }
 }
