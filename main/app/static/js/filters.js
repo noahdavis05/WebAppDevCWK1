@@ -19,6 +19,39 @@ document.addEventListener("DOMContentLoaded", function () {
     // Default sorting on page load
     sortAssignments("soonest");
 
+    // Function to save filters to local storage
+    function saveFilters() {
+        const selectedStatusFilter = filterStatusSelect.value;
+        const selectedModuleFilter = filterModuleSelect.value;
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Save to local storage
+        localStorage.setItem('filterStatus', selectedStatusFilter);
+        localStorage.setItem('filterModule', selectedModuleFilter);
+        localStorage.setItem('searchTitle', searchQuery);
+    }
+
+    // Function to load filters from local storage
+    function loadFilters() {
+        const savedStatusFilter = localStorage.getItem('filterStatus');
+        const savedModuleFilter = localStorage.getItem('filterModule');
+        const savedSearchQuery = localStorage.getItem('searchTitle');
+
+        // Apply the loaded values if they exist
+        if (savedStatusFilter) {
+            filterStatusSelect.value = savedStatusFilter;
+        }
+        if (savedModuleFilter) {
+            filterModuleSelect.value = savedModuleFilter;
+        }
+        if (savedSearchQuery) {
+            searchInput.value = savedSearchQuery;
+        }
+
+        // Call filterAssignments to reflect loaded filters
+        filterAssignments();
+    }
+
     function filterAssignments() {
         const selectedStatusFilter = filterStatusSelect.value;
         const selectedModuleFilter = filterModuleSelect.value;
@@ -122,11 +155,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Event listeners for all filters
-    filterStatusSelect.addEventListener("change", filterAssignments);
-    filterModuleSelect.addEventListener("change", filterAssignments);
-    searchInput.addEventListener("input", filterAssignments);
+    filterStatusSelect.addEventListener("change", function () {
+        filterAssignments();
+        saveFilters(); // Save the selected filter
+    });
 
-     // Initially filter to show only outstanding tasks
-     filterStatusSelect.value = "all"; // Set default filter to show only incomplete tasks
-     filterAssignments(); // Call to apply the initial filter
+    filterModuleSelect.addEventListener("change", function () {
+        filterAssignments();
+        saveFilters(); // Save the selected filter
+    });
+
+    searchInput.addEventListener("input", function () {
+        filterAssignments();
+        saveFilters(); // Save the search input
+    });
+
+    // Load filters from local storage on page load
+    loadFilters();
+
+
 });
