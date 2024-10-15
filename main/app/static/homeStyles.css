@@ -6,17 +6,101 @@ body {
     line-height: 1.6; /* Improve readability */
 }
 
+/* options under assignment */
+/* Button Navbar Styling */
+.button-navbar {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    align-items: center;
+    background-color: #E2E2B6; /* Background to make it look like a navbar */
+    padding: 0.5rem 1rem;
+    border-radius: 5px; /* Rounded edges to match the design */
+    box-shadow: 0 2px 4px #0000001a; /* Subtle shadow for navbar */
+}
 
+#toggle-filters,
+#order-by,
+a.btn {
+    background-color: #FF6F61; /* Coral background */
+    border: none;
+    color: #FFF9D6; /* Light background text */
+    padding: 0.4rem 0.8rem; /* Smaller padding for compact buttons */
+    font-size: 0.875rem; /* Slightly smaller text size */
+    letter-spacing: 0.05rem;
+    border-radius: 3px; /* Small border-radius for the buttons */
+    margin-right: 0.5rem; /* Space between buttons */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
 
-/* Button styling */
+#toggle-filters:hover,
+#order-by:hover,
+a.btn:hover {
+    background-color: #E65B50; /* Darker coral on hover */
+    color: #FFF; /* White text on hover */
+}
 
+/* Remove right margin on the last button to align properly */
+.button-navbar a.btn:last-child {
+    margin-right: 0;
+}
 
-/* Filter and Order Container styling */
-#filter-container,
-#order-container {
-    margin-top: -20px; /* Adjust to bring sections closer to the buttons */
-    position: relative; /* Positioning if needed */
-    z-index: 1; /* Ensure it appears above other content */
+/* Responsive Adjustments for Buttons */
+@media (max-width: 576px) {
+    .button-navbar {
+        flex-direction: column;
+        align-items: stretch; /* Full width for mobile */
+    }
+    
+    #toggle-filters,
+    #order-by,
+    a.btn {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    /* Remove margin on last child in column layout */
+    .button-navbar a.btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Filter container */
+#filter-container {
+    max-width: 100%; /* Make sure it doesn't take up more space than needed */
+    background-color: #E2E2B6; /* Match your background color */
+    padding: 0.5rem; /* Minimal padding */
+    border: none; /* Remove any borders */
+    margin-top: 0; /* Remove space above the filter container */
+}
+
+/* Flex layout to keep filters on one line */
+#filter-container .card-body {
+    display: flex;
+    gap: 0.5rem; /* Small gap between items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    padding: 5px; /* Remove any internal padding */
+}
+
+/* Styling for inputs and selects */
+#filter-container input,
+#filter-container select {
+    min-width: 150px; /* Ensure they don't get too small */
+    max-width: 250px; /* Keep them compact */
+    flex: 1; /* Allow flexible growth */
+    padding: 0.3rem; /* Reduce padding */
+    background-color: #FFF9D6; /* Match background */
+    border-bottom: 2px solid #FF6F61; /* Coral border */
+    color: #000; /* Black text */
+    
+    
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #filter-container .card-body {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
 }
 
 /* Card styling */
@@ -28,12 +112,12 @@ body {
 }
 
 .card-body {
-    background-color: #FFF9D6;
+    background-color: #E2E2B6;
     border: 0 solid #FF6F61;
     padding: 0;
     margin: 0;
+    color: #FF6F61;
 }
-
 
 /* Card Title styling */
 .card-title {
@@ -47,6 +131,19 @@ body {
 
 .badge.bg-warning {
     background-color: #FF9800; /* Orange for incomplete */
+}
+
+/* Dropdown styling */
+/* Dropdown Styling */
+#filter-status,
+#filter-module {
+    background-color: #FFFFFF;
+    border: 1px solid #c0cad2; 
+    color: #6C757D;
+    border-radius: 5px; /* Rounded corners */
+    padding: 0.5rem 1rem; /* Comfortable padding */
+    font-size: 1rem; /* Readable font size */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for interactions */
 }
 
 /* Responsive adjustments */

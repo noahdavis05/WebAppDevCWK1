@@ -127,6 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.addEventListener("input", filterAssignments);
 
      // Initially filter to show only outstanding tasks
-     filterStatusSelect.value = "incomplete"; // Set default filter to show only incomplete tasks
+     filterStatusSelect.value = "all"; // Set default filter to show only incomplete tasks
      filterAssignments(); // Call to apply the initial filter
 });

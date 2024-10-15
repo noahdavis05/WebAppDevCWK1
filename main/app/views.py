@@ -19,6 +19,7 @@ def toggle_complete(assignment_id):
     try:
         validate_csrf(request.form['csrf_token'])
     except Exception as e:
+        # change this to take the user to render a view which will tell them to go back home and try again as there was an error.
         return "CSRF token is invalid or missing!", 400
     # find the assignment and 404 if no exists
     assignment = Assignment.query.get_or_404(assignment_id)
