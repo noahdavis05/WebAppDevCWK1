@@ -1,10 +1,12 @@
 /* Body styling */
 body {
     font-family: Arial, sans-serif; /* Use a readable font */
-    background-color: #FFF9D6; /* Dark Slate background */
+    background-color: #121212; /* Dark Slate background */
     color: #D5D5D5; /* Light Gray text */
     line-height: 1.6; /* Improve readability */
 }
+
+
 
 /* options under assignment */
 /* Button Navbar Styling */
@@ -12,7 +14,7 @@ body {
     display: flex;
     justify-content: flex-start; /* Align buttons to the left */
     align-items: center;
-    background-color: #E2E2B6; /* Background to make it look like a navbar */
+    background-color: #343434; /* Background to make it look like a navbar */
     padding: 0.5rem 1rem;
     border-radius: 5px; /* Rounded edges to match the design */
     box-shadow: 0 2px 4px #0000001a; /* Subtle shadow for navbar */
@@ -68,7 +70,7 @@ a.btn:hover {
 /* Filter container */
 #filter-container {
     max-width: 100%; /* Make sure it doesn't take up more space than needed */
-    background-color: #E2E2B6; /* Match your background color */
+    background-color: #1E1E1E; /* Match your background color */
     padding: 0.5rem; /* Minimal padding */
     border: none; /* Remove any borders */
     margin-top: 0; /* Remove space above the filter container */
@@ -105,15 +107,14 @@ a.btn:hover {
 
 /* Card styling */
 .card {
-    background-color: #E2E2B6; /* Darker background for cards */ /* Subtle border for cards */
-    color: #D5D5D5; /* Light Gray text for card content */
-    border: 0; /* Remove any default border */
-    box-shadow: none; /* Remove default Bootstrap shadow */
+    background-color: #121212 !important;
 }
 
+
+
 .card-body {
-    background-color: #E2E2B6;
-    border: 0 solid #FF6F61;
+    background-color: #343434;
+    border-radius: 0.5rem; /* Rounded corners */
     padding: 0;
     margin: 0;
     color: #FF6F61;
