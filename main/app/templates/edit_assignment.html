@@ -12,6 +12,15 @@
 {% block content %}
 <div class="edit-assignment-form">
     <h2>Edit Assignment</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <form method="POST" action="{{ url_for('edit_assignment', assignment_id=assignment.id) }}">
         {{ form.hidden_tag() }}
 

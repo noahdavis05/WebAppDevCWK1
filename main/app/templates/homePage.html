@@ -43,11 +43,13 @@
             <span class="me-2">Module</span>
             <select id="filter-module" class="form-select">
                 <option value="all">All</option>
-                {% for assignment in assignments %}
-                    <option value="{{ assignment.module_code }}">{{ assignment.module_code }}</option>
+                {% for module in modules %}
+                    <option value="{{ module }}">{{ module }}</option>
                 {% endfor %}
             </select>
         </div>
+        
+        
     </div>
 </div>
 

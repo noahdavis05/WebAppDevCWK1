@@ -11,7 +11,8 @@ def index():
     # generate a csrf token for the completion form
     csrf_token = generate_csrf()
     # Pass the assignments to the template
-    return render_template("homePage.html", assignments=assignments, csrf_token=csrf_token)
+    modules = set(assignment.module_code for assignment in assignments)
+    return render_template("homePage.html", assignments=assignments, csrf_token=csrf_token, modules=modules)
 
 @app.route('/toggle-complete/<int:assignment_id>', methods=['POST'])
 def toggle_complete(assignment_id):
@@ -33,7 +34,7 @@ def toggle_complete(assignment_id):
     return redirect("/")
 
 
-@app.route('/add-assignment', methods=['GET','Post'])
+@app.route('/add-assignment', methods=['GET', 'POST'])
 def add_assignment():
     form = AssignmentForm()
     if form.validate_on_submit():
@@ -48,9 +49,13 @@ def add_assignment():
         # Add to the database
         db.session.add(assignment)
         db.session.commit()
-        flash('Assignment has been added!', 'success')
         return redirect(url_for('index'))  # Redirect to the homepage or another route
+    else:
+        if form.errors:
+            flash(form.errors['title'][0])
+
     return render_template('add_assignment.html', form=form)
+
 
 
 @app.route("/view-assignment/<int:assignment_id>")
@@ -65,19 +70,21 @@ def view_assignment(assignment_id):
     return render_template("view_assignment.html", assignment = assignment)
 
 
-@app.route("/edit-assignment/<int:assignment_id>", methods=['GET','Post'])
+@app.route("/edit-assignment/<int:assignment_id>", methods=['GET', 'POST'])
 def edit_assignment(assignment_id):
-    # get the assignment from the database
+    # Get the assignment from the database
     assignment = Assignment.query.get(assignment_id)
-    # check if this assignment exists
+    
+    # Check if this assignment exists
     if assignment is None:
         return render_template("404.html", message="Assignment doesn't exist!"), 404
     
-    # need to get the assignment form
-    form = AssignmentForm(object=assignment)
-
-    # check form is validated and update the row in db
+    # Create an instance of the form with the current assignment data and ID
+    form = AssignmentForm(obj=assignment, assignment_id=assignment_id)
+    
+    # Check if the form is validated and update the row in the database
     if form.validate_on_submit():
+        # Update assignment fields with the form data
         assignment.title = form.title.data
         assignment.module_code = form.module_code.data
         assignment.deadline = form.deadline.data
@@ -86,7 +93,11 @@ def edit_assignment(assignment_id):
         
         # Commit the changes to the database
         db.session.commit()
-        flash('Assignment has been updated!', 'success')
-        return redirect("/")  # Redirect to the homepage or another route
+        return redirect(url_for('index'))  # Redirect to the homepage or another route
     
+    # Flash validation errors if any
+    if form.errors:
+        for error in form.errors.values():
+            flash(error[0], 'danger')  # Flash the first error for each field
+
     return render_template("edit_assignment.html", form=form, assignment=assignment)

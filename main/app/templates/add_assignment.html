@@ -8,6 +8,16 @@
 {% block content %}
     <div class="add-assignment-form">
         <h2>Add New Assignment</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+        
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             
@@ -43,7 +53,7 @@
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+                {{ form.description(class="form-control", id="description", rows=5) }} <!-- Use form.description here -->
                 <small class="form-text text-danger" id="descriptionError">
                     {% if form.description.errors %}
                         {{ form.description.errors[0] }}
