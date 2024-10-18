@@ -1,0 +1,66 @@
+/* General styles for the form layout */
+.edit-assignment-form {
+    background-color: #343434; /* Black background */
+    padding: 20px;
+    border-radius: 10px;
+    color: #e2e2e2; /* Light text color for readability */
+    max-width: 600px;
+    margin: 0 auto; /* Center the form on the page */
+}
+
+/* Form element spacing and layout */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #e2e2e2;
+}
+
+.form-control {
+    background-color: #494949; /* Input background */
+    color: #e2e2e2; /* Text color */
+    border: 1px solid #6c757d; /* Slight border for input fields */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Highlighted border color */
+    background-color: #494949;
+    outline: none;
+}
+
+small.form-text {
+    display: block;
+    margin-top: 5px;
+    color: #e2e2e2;
+}
+
+.text-danger {
+    color: #ff4d4d; /* Error message in red */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #6a5acd;
+    border-color: #6a5acd;
+}
+
+.btn-secondary {
+    background-color: #555555;
+    border-color: #555555;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    opacity: 0.8;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+}
