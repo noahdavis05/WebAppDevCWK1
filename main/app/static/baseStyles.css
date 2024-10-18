@@ -2,18 +2,18 @@
 body {
     font-family: Arial, sans-serif; /* Use a readable font */
     background-color: #121212; /* Dark Slate background */
-    color: #E2E2B6; /* Light Gray text */
+    color: #E2E2E2; /* Light Gray text */
     line-height: 1.6; /* Improve readability */
 }
 
 /* Navbar styling */
 .navbar {
     background-color: #343434; /* Match navbar with body background */
-    border-bottom: 2px solid #FF6F61; /* Coral border below the navbar */
+    border-bottom: 2px solid #BB86FC; /* Coral border below the navbar */
 }
 
 .navbar a {
-    color: #FF6F61; /* Light Gray text for navbar links */
+    color: #E2E2E2; /* Light Gray text for navbar links */
 }
 
 .navbar a:hover {
@@ -21,12 +21,12 @@ body {
 }
 
 .navbar-toggler {
-    color: #FF6F61;
+    color: #BB86FC;
     border: 2px solid;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,111,97,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(237,188 ,252,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .me-2 {
@@ -45,12 +45,12 @@ body {
 
 /* Button styles */
 .btn-primary {
-    background-color: #FF6F61; /* Coral background for primary buttons */
+    background-color: #BB86FC; /* Coral background for primary buttons */
     border: none; /* No border */
 }
 
 .btn-primary:hover {
-    background-color: #E74C3C; /* Darker coral on hover */
+    background-color: #ad6dfb; /* Darker coral on hover */
 }
 
 /* Responsive adjustments */

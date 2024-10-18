@@ -10,10 +10,10 @@
 
     <div class="button-navbar d-flex mb-1">
         <!-- Filters Button -->
-        <button id="toggle-filters" class="btn btn-primary me-2">Filters</button>
+        <button id="toggle-filters" class="btn btn-primary ">Filters</button>
     
         <!-- Order Button -->
-        <button id="order-by" class="btn btn-primary me-2">Order</button>
+        <button id="order-by" class="btn btn-primary ">Order</button>
     
         <!-- New Assignment Button -->
         <a href="/add-assignment" class="btn btn-primary">New</a>
@@ -78,7 +78,7 @@
 
     
     <!-- Assignment Cards -->
-    <div class="row">
+    <div class="row d-flex">
         {% for assignment in assignments %}
         <div class="col-md-4 assignment-card" data-status="{{ 'completed' if assignment.is_completed else 'incomplete' }}" data-module-code="{{ assignment.module_code }}" data-title="{{ assignment.title | lower }}">
             <div class="card mt-4 shadow-sm">
@@ -91,15 +91,15 @@
                         {% if assignment.is_completed %}
                             <span class="badge bg-success">Completed</span>
                         {% else %}
-                            <span class="badge bg-warning">Incomplete</span>
+                            <span class="badge bg-danger">Incomplete</span>
                         {% endif %}
                     </p>
-                    <a href="/view-assignment/{{ assignment.id }}" class="btn btn-info">Details</a>
-                    <a href="/edit-assignment/{{ assignment.id }}" class="btn btn-primary">Edit</a>
+                    <a href="/view-assignment/{{ assignment.id }}" class="btn btn-primary">Details</a>
+                    <a href="/edit-assignment/{{ assignment.id }}" class="btn btn-primary" >Edit</a>
                     <form action="{{ url_for('toggle_complete', assignment_id=assignment.id) }}" method="POST" style="display:inline;">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> 
                         {% if assignment.is_completed %}
-                            <button type="submit" class="btn btn-warning">Mark Incomplete</button>
+                            <button type="submit" class="btn btn-danger">Mark Incomplete</button>
                         {% else %}
                             <button type="submit" class="btn btn-success">Mark Complete</button>
                         {% endif %}

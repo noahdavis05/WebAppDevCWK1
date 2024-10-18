@@ -11,35 +11,34 @@ body {
 /* options under assignment */
 /* Button Navbar Styling */
 .button-navbar {
-    display: flex;
-    justify-content: flex-start; /* Align buttons to the left */
-    align-items: center;
+
     background-color: #343434; /* Background to make it look like a navbar */
     padding: 0.5rem 1rem;
     border-radius: 5px; /* Rounded edges to match the design */
     box-shadow: 0 2px 4px #0000001a; /* Subtle shadow for navbar */
 }
 
-#toggle-filters,
-#order-by,
-a.btn {
-    background-color: #FF6F61; /* Coral background */
-    border: none;
-    color: #FFF9D6; /* Light background text */
-    padding: 0.4rem 0.8rem; /* Smaller padding for compact buttons */
-    font-size: 0.875rem; /* Slightly smaller text size */
-    letter-spacing: 0.05rem;
-    border-radius: 3px; /* Small border-radius for the buttons */
-    margin-right: 0.5rem; /* Space between buttons */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+
+
+/* Custom color for Bootstrap's .btn-primary */
+.btn-success{
+
 }
 
-#toggle-filters:hover,
-#order-by:hover,
-a.btn:hover {
-    background-color: #E65B50; /* Darker coral on hover */
-    color: #FFF; /* White text on hover */
+.btn-primary {
+    background-color: #BB86FC; /* Your custom background color */
+    border-color: #BB86FC; /* Set the border to match the background */
+    color: #343434; /* Text color */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    
 }
+
+.btn-primary:hover {
+    background-color: #ad6dfb; /* Custom hover background color */
+    border-color: #ad6dfb; /* Set the border to match the hover background */
+    color: #343434; /* Text color on hover */
+}
+
 
 /* Remove right margin on the last button to align properly */
 .button-navbar a.btn:last-child {
@@ -55,14 +54,14 @@ a.btn:hover {
     
     #toggle-filters,
     #order-by,
-    a.btn {
+    .btn {
         margin-right: 0;
         margin-bottom: 0.5rem;
         width: 100%; /* Full width on smaller screens */
     }
 
     /* Remove margin on last child in column layout */
-    .button-navbar a.btn:last-child {
+    .button-navbar .btn:last-child {
         margin-bottom: 0;
     }
 }
@@ -108,6 +107,7 @@ a.btn:hover {
 /* Card styling */
 .card {
     background-color: #121212 !important;
+    
 }
 
 
@@ -117,12 +117,13 @@ a.btn:hover {
     border-radius: 0.5rem; /* Rounded corners */
     padding: 0;
     margin: 0;
-    color: #FF6F61;
+    color: #e2e2e2;
+    
 }
 
 /* Card Title styling */
 .card-title {
-    color: #FF6F61; /* Coral color for card titles */
+    color: #e2e2e2; /* Coral color for card titles */
 }
 
 /* Assignment status badge colors */
