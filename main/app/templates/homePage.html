@@ -81,6 +81,8 @@
     
     <!-- Assignment Cards -->
     <div class="row d-flex">
+        <div class="card-body" id="no-tasks-message" style="display: none;">No tasks matching current filters.</div>
+
         {% for assignment in assignments %}
         <div class="col-md-4 assignment-card" data-status="{{ 'completed' if assignment.is_completed else 'incomplete' }}" data-module-code="{{ assignment.module_code }}" data-title="{{ assignment.title | lower }}">
             <div class="card mt-4 shadow-sm">

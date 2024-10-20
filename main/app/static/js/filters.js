@@ -56,32 +56,48 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedStatusFilter = filterStatusSelect.value;
         const selectedModuleFilter = filterModuleSelect.value;
         const searchQuery = searchInput.value.toLowerCase();
-
+   
+        let visibleCardCount = 0; // Track how many cards are visible
+   
         assignmentCards.forEach(card => {
             const status = card.getAttribute("data-status");
             const moduleCode = card.getAttribute("data-module-code");
             const title = card.getAttribute("data-title");
-
+   
             let showCard = true; // Start by assuming we want to show this card
-
+   
             // Filter by status
             if (selectedStatusFilter !== "all") {
                 showCard = (selectedStatusFilter === "completed" && status === "completed") ||
                            (selectedStatusFilter === "incomplete" && status === "incomplete");
             }
-
+   
             // Filter by module code
             if (showCard && selectedModuleFilter !== "all") {
                 showCard = (moduleCode === selectedModuleFilter);
             }
-
+   
             // Filter by title
             if (showCard && searchQuery) {
                 showCard = title.includes(searchQuery);
             }
-
-            card.style.display = showCard ? "block" : "none"; // Show or hide the card
+   
+            // Show or hide the card based on the filters
+            card.style.display = showCard ? "block" : "none";
+   
+            // Count visible cards
+            if (showCard) {
+                visibleCardCount++;
+            }
         });
+   
+        // Show or hide the "No tasks" message based on the visible card count
+        const noTasksMessage = document.getElementById("no-tasks-message");
+        if (visibleCardCount === 0) {
+            noTasksMessage.style.display = "block";
+        } else {
+            noTasksMessage.style.display = "none";
+        }
     }
 
     // Function to convert 'dd-mm-yyyy' format to a Date object

@@ -151,3 +151,13 @@ body {
         background-color: #2B2B2B; /* Ensure collapsible navbar has the same background */
     }
 }
+
+#no-tasks-message {
+    display: none; /* Initially hidden */
+    text-align: center; /* Center the text */
+    font-size: 18px; /* Adjust font size for better visibility */
+    margin-top: 40px; /* Add margin on top */
+    color: #e2e2e2; /* Gray color for the text */
+    font-weight: bold; /* Make the text bold */
+}
+
