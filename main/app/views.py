@@ -33,6 +33,18 @@ def toggle_complete(assignment_id):
     db.session.commit()
     return redirect("/")
 
+@app.route('/delete-assignment/<int:assignment_id>', methods=['POST'])
+def delete_assignment(assignment_id):
+    # Query the assignment by its ID
+    assignment = Assignment.query.get_or_404(assignment_id)
+    
+    # Delete the assignment from the database
+    db.session.delete(assignment)
+    db.session.commit()
+    
+    # Redirect to the homepage after deletion
+    return redirect(url_for('index'))
+
 
 @app.route('/add-assignment', methods=['GET', 'POST'])
 def add_assignment():

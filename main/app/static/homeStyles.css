@@ -161,3 +161,29 @@ body {
     font-weight: bold; /* Make the text bold */
 }
 
+/* Positioning the delete button in the top-right corner */
+.assignment-card {
+    position: relative; /* Necessary for the absolute positioning of the button */
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent; /* Keeps background transparent */
+    border: none; /* No border */
+    color: red; /* Color of the icon */
+    font-size: 20px; /* Icon size */
+    width: auto; /* Ensures it doesn’t expand */
+    height: auto; /* Ensures height is not expanded */
+    padding: 0; /* Removes padding to keep size fixed */
+    line-height: normal; /* Ensures line-height doesn't affect size */
+}
+
+.delete-btn:hover {
+    color: darkred; /* Darker red on hover */
+    cursor: pointer; /* Pointer on hover */
+}
+
+
+
