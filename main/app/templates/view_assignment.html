@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/viewDetails.css">
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h1>Assignment Details</h1>
@@ -13,12 +17,17 @@
             <div class="card-body">
                 
                 <p><strong>Due Date:</strong> {{ assignment.deadline.strftime('%d-%m-%Y') }}</p>
-                <p><strong>Description:</strong> {{ assignment.description }}</p>
+                <p><strong>Description:</strong>
+                    {% if assignment.description %}
+                        {{ assignment.description }}</p>
+                    {% else %}
+                        No description
+                    {% endif %}
                 <p><strong>Status:</strong> 
                 {% if assignment.is_completed %}
                     <span class="badge bg-success">Completed</span>
                 {% else %}
-                    <span class="badge bg-warning">Incomplete</span>
+                    <span class="badge bg-danger">Incomplete</span>
                 {% endif %}
                 </p>
                 <p><strong>Created On:</strong> {{ assignment.date_created.strftime('%d-%m-%Y')}}</p>

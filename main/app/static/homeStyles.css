@@ -50,6 +50,7 @@ body {
     
     #toggle-filters,
     #order-by,
+    #new-task,
     .btn {
         margin-right: 0;
         margin-bottom: 0.5rem;
@@ -63,9 +64,9 @@ body {
 }
 
 /* Filter container */
-#filter-container {
+#filter-container, #order-container {
     width: 100%; /* Ensure full width */
-    background-color: #1E1E1E;
+    background-color: #343434 !important;
     padding: 0; /* Minimal padding */
     border: none;
     margin-top: 0;
@@ -118,8 +119,10 @@ body {
 }
 
 /* Card Title styling */
+
 .card-title {
     color: #e2e2e2; /* Coral color for card titles */
+    background-color: #343434;
 }
 
 /* Assignment status badge colors */
