@@ -56,6 +56,6 @@ body {
 /* Responsive adjustments */
 @media (max-width: 576px) {
     .navbar-collapse {
-        background-color: #021526; /* Ensure collapsible navbar has the same background */
+        background-color: #343434; /* Ensure collapsible navbar has the same background */
     }
 }

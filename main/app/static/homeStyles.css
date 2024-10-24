@@ -20,6 +20,8 @@ body {
 
 
 
+
+
 /* Custom color for Bootstrap's .btn-primary */
 
 .btn-primary {
@@ -37,10 +39,7 @@ body {
 }
 
 
-/* Remove right margin on the last button to align properly */
-.button-navbar a.btn:last-child {
-    margin-right: 0;
-}
+
 
 /* Responsive Adjustments for Buttons */
 @media (max-width: 576px) {

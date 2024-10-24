@@ -9,76 +9,68 @@
 <div class="container mt-0">
     <h1 class="">Your Assignments</h1>
 
-    <div class="button-navbar d-flex mb-1">
-        <!-- Filters Button -->
-        <button id="toggle-filters" class="btn btn-primary ">Filters</button>
+    <div class="button-navbar d-flex flex-column mb-1">
+        <!-- First Row: Buttons -->
+        <div class="d-flex  mb-1">
+            <!-- Filters Button -->
+            <button id="toggle-filters" class="btn btn-primary">Filters</button>
     
-        <!-- Order Button -->
-        <button id="order-by" class="btn btn-primary ">Order</button>
+            <!-- Order Button -->
+            <button id="order-by" class="btn btn-primary">Order</button>
     
-        <!-- New Assignment Button -->
-        <a href="/add-assignment" class="btn btn-primary">New</a>
-    </div>
-
-    
-    
-
-<!-- Filter Section (Initially hidden) -->
-<div id="filter-container" style="display: none;" class="card mb-0 shadow-sm">
-    <div class="card-body d-flex flex-wrap justify-content-between align-items-center">
-        <!-- Search by Title Input -->
-        <input type="text" id="search-title" class="form-control me-2" placeholder="Search by title">
-        
-        <!-- Filter by Status Dropdown with Label -->
-        <div class="d-flex align-items-center me-2">
-            <span class="me-2">Status</span>
-            <select id="filter-status" class="form-select">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
-                <option value="incomplete">Incomplete</option>
-            </select>
+            <!-- New Assignment Button -->
+            <a href="/add-assignment" class="btn btn-primary">New</a>
         </div>
-
-        <!-- Filter by Module Dropdown with Label -->
-        <div class="d-flex align-items-center">
-            <span class="me-2">Module</span>
-            <select id="filter-module" class="form-select">
-                <option value="all">All</option>
-                {% for module in modules %}
-                    <option value="{{ module }}">{{ module }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        
-        
-    </div>
-</div>
-
     
+        <!-- Second Row: Filter and Order Sections (Initially hidden) -->
+        <div class="d-flex flex-column">
+            <!-- Filter Section -->
+            <div id="filter-container" style="display: none;" class="card mb-1 shadow-sm">
+                <div class="card-body d-flex flex-wrap justify-content-between align-items-center">
+                    <!-- Search by Title Input -->
+                    <input type="text" id="search-title" class="form-control me-2" placeholder="Search by title">
     
-
-    <!-- Order By (Initially hidden) -->
-    <div id="order-container" style="display: none;" class="card mb-0 shadow-sm">
-        <div class="card-body">
-            <form id="order-form">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="orderOptions" id="orderSoonest" value="soonest" checked>
-                    <label class="form-check-label" for="orderSoonest">
-                        Soonest Due
-                    </label>
+                    <!-- Filter by Status Dropdown with Label -->
+                    <div class="d-flex align-items-center me-2">
+                        <span class="me-2">Status</span>
+                        <select id="filter-status" class="form-select">
+                            <option value="all">All</option>
+                            <option value="completed">Completed</option>
+                            <option value="incomplete">Incomplete</option>
+                        </select>
+                    </div>
+    
+                    <!-- Filter by Module Dropdown with Label -->
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">Module</span>
+                        <select id="filter-module" class="form-select">
+                            <option value="all">All</option>
+                            {% for module in modules %}
+                            <option value="{{ module }}">{{ module }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="orderOptions" id="orderLatest" value="latest">
-                    <label class="form-check-label" for="orderLatest">
-                        Latest Due
-                    </label>
+            </div>
+    
+            <!-- Order Section -->
+            <div id="order-container" style="display: none;" class="card mb-0 shadow-sm">
+                <div class="card-body">
+                    <form id="order-form">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="orderOptions" id="orderSoonest" value="soonest" checked>
+                            <label class="form-check-label" for="orderSoonest">Soonest Due</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="orderOptions" id="orderLatest" value="latest">
+                            <label class="form-check-label" for="orderLatest">Latest Due</label>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-
-
-
+    
     
     <!-- Assignment Cards -->
     <div class="row d-flex">
